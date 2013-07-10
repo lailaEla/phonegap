@@ -1,7 +1,0 @@
-{
-	"status":{"http_code":200},
-	"contents":{
-		"countryCode":"FR",
-		"towns":["SAUMUR","CHACE","DISTRE","ROU MARSON","SOUZAY CHAMPIGNY"]
-		}
-}
