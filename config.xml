@@ -4,11 +4,11 @@
     id        = "com.phonegap.example"
     version   = "1.0.0">
 
-<name>VOIDBOOK 1.0</name>
+<name>Kwixo</name>
 <preference name="orientation" value="default" />
 <preference name="webviewbounce" value="false" />
 <description>
-VOID BOOKS
+	Kwixo phoneGap
 </description>
 <icon src="images/icon.png" width="57" height="57" />
 <icon src="images/icon.png" gap:platform="ios" width="72" height="72" />
