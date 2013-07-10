@@ -1,0 +1,25 @@
+<%
+	var validable = model.get('validable'),
+		claim = model.get('claim'),
+		notification = model.get('notification'),
+		relaunchable = model.get('relaunchable'),
+		awaiting = model.get('awaiting');
+%>
+
+<div class="inner">
+	<h1 class="brown">Actions</h1> 
+	<div class="wrapper">
+		
+		<div class="links alt">
+			<ul>
+				<% if(0 < validable.length){ %> <li><a href="#user/actions/validable">Accepter une demande d'argent (<%= validable.length %>)</a></li> <% }; %>
+				<% if(0 < claim.length){ %> <li><a href="#user/actions/claim">Relancer une demande d'argent (<%= claim.length %>)</a></li> <% }; %>
+				<% if(0 < relaunchable.length){ %> <li><a href="#user/actions/relaunchable">Relancer un envoi d'argent (<%= relaunchable.length %>)</a></li> <% }; %>
+				<% if(0 < awaiting.length){ %> <li><a href="#user/actions/awaiting">Valider une livraison (<%= awaiting.length %>)</a></li> <% }; %>
+				<li><a href="#user/actions/notification">Voir vos notifications (<%= notification.length %>)</a></li>
+			</ul>
+		</div><!-- / .links -->
+
+	</div><!-- / .wrapper -->
+
+</div>

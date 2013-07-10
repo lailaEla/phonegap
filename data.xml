@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+<projets>
+   <projet>
+   	  <nom>Hermes</nom>
+   	  <description><![CDATA[Hermis est un projet de la marque Hermis turné sur iPad en HTML 5 avec des animations]]></description>
+   	  <image src="http://ino-maroc.com/voidbook/images/hermes.jpg"/>
+   </projet>
+</projets>
+
+<config>
+    
+</config>
+
+<team>
+    VOID Agadir
+</team>
+
+</data>

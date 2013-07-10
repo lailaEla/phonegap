@@ -1,0 +1,60 @@
+{
+	"paymentDetail":
+	{
+		"id" : "l1",
+		"reference" : "10",
+		"amount":10.0,
+		"fee":5.0,
+		"currency" : "EUR",
+		"meanOfPaymentId" : "dd808181291123f801291124cf990003",
+		"orderDate" : "01-01-1970",
+		"shippingDate" : "01-01-1970",
+		"billingAddress": {
+			"address" : "rue de la paix",
+			"country" : "France",
+			"identity" : "4",
+			"addressCounterpart":null,
+			"zipCode" : "75001",
+			"town" : "Paris",
+			"placeName":null
+		},
+		"shippingAddress": {
+			"address" : "rue Victor Hugo",
+			"country" : "France",
+			"Paiements" : 24,
+			"identity" : "2",
+			"addressCounterpart":null,
+			"zipCode" : "95640",
+			"town" : "Haravilliers",
+			"placeName":null
+		},
+		"creditContractNumber" : "hari.seldon@fondation.gouv",
+		"customerEmail" : "hari",
+		"customerTitle" : "M.",
+		"customerFirstName" : "Michel",
+		"customerLastName" : "Dupont",
+		"customerHomePhoneNumber" : "seldon",
+		"customerMobilePhoneNumber" : "M",
+		"merchantName" : "123",
+		"merchantUrl" : "cdiscount.com",
+		"merchantOrderReference" : "123",
+		"inComplaintState":false,
+		"availableActions":[
+			"CANCEL_REFUND_DEMAND","CANCEL_CANCELLATION_DEMAND",
+			"SCORING_OK_AUTOMATIC","CONFIRM_CUSTOMER_DEBIT",
+			"MAKE_COMPLAINT","CONFIRM_COMMAND_RECEPTION_BY_CUSTOMER",
+			"CONFIRM_REFUND_DONE","ASK_FOR_PARTIAL_REFUND_EXTERNAL",
+			"ASK_FOR_PARTIAL_CANCELLATION_BY_MERCHANT",
+			"SCORING_NEGATIVE","CONFIRM_REFUND_FAIL",
+			"ASK_FOR_PARTIAL_REFUND_BY_MERCHANT",
+			"COMMAND_CONFIRM_AUTOMATICALLY","SCORING_POSITIVE",
+			"CONFIRM_CUSTOMER_DEBIT_FAIL","ASK_FINANCING_BY_MERCHANT",
+			"CONFIRM_SHIPPING_BY_MERCHANT",
+			"CONFIRM_COMMAND_RECEPTION_WITH_PROBLEMS_BY_CUSTOMER",
+			"ASK_FOR_TOTAL_REFUND_BY_EXTERNAL","CONFIRM_FINANCING",
+			"CONFIRM_CANCELLATION","ASK_FOR_TOTAL_REFUND_BY_MERCHANT",
+			"SCORING_KO","ASK_FOR_TOTAL_CANCELLATION_BY_MERCHANT",
+			"SCORING_KO_AUTOMATIC","SCORING_OK"
+		]
+	}
+}

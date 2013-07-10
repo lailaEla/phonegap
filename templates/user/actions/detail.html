@@ -1,0 +1,159 @@
+<%
+	var	symbol = {
+			EUR:'€'
+		},
+		feesCond = (0 == model.get('fees'))? 'GRATUIT' : model.get('fees'),
+		error = model.get('error'),
+		type = model.get('requestType'),
+		await = model.get('merchantName'),
+		availableActions = model.get('availableActions'),
+		loading = model.get('loading');
+%>
+
+<div class="inner <% if(loading){ %>loading<% }; %>">
+	
+	<h1 class="brown"><%= model.get('head') %></h1>
+
+	<% if(!loading){ %>
+
+	<div class="wrapper form">
+		
+		<% if('' != error){ %>
+		
+		<div class="sad"><%= error %></div>
+
+		<% } else { %>
+
+		<form name="formDetail" novalidate="novalidate">
+				
+			<% if(type){ %>
+
+				<div class="sheet">
+
+				<%
+					switch(type){
+						case 'DEMAND':
+				%>
+					
+					<strong><%= model.get('creditor') %></strong><br />
+					vous demande : <strong><%= model.get('amount') %><%= symbol[model.get('currency')] %></strong><br />
+					
+					<%
+							break;
+							case 'REQUEST':
+					%>
+
+					Vous souhaitez demander <strong><%= model.get('amount') %><%= symbol[model.get('currency')] %></strong><br />
+					à <strong><%= model.get('creditor') %></strong><br />
+
+					<%
+
+							break;
+						};
+					%>
+
+					Référence : <%= model.get('references') %> - Frais : <%= feesCond %><br />
+					
+					<% if(model.get('recurrence')){ %>
+					Fréquence : <%= model.get('periodicity') %>
+					<% }; %>
+
+				</div><!-- / .sheet -->
+				
+				<div class="sheet">
+					Objet : <strong><%= model.get('subject') %></strong><br />
+					Message : <strong><%= model.get('message') %></strong><br />
+				</div><!-- / .sheet -->
+
+				<div class="buttons">
+
+					<% if(-1 != availableActions.indexOf('REFUSE_DEMAND')){ %>
+					<input type="reset" name="refuseDemand" value="Refuser" />
+					<% }; %>
+					
+					<% if(-1 != availableActions.indexOf('REFUSE_TRANSFER')){ %>
+					<input type="reset" name="refuseTransfer" value="Refuser" />
+					<% }; %>
+						
+					<% if(-1 != availableActions.indexOf('CANCEL_BY_CREATOR')){ %>
+					<input type="reset" name="cancel" value="Annuler" />
+					<% }; %>
+					
+					<% if(-1 != availableActions.indexOf('ACCEPT_DEMAND')){ %>
+					<input type="submit" name="acceptDemand" value="Accepter" />
+					<% }; %>
+
+					<% if(-1 != availableActions.indexOf('RELAUNCH_INVITATION')){ %>
+					<input type="submit" name="sendInvitation" value="Relancer" />
+					<% }; %>
+
+
+				</div><!-- / .buttons -->
+
+			<% }; %>
+
+			<% if(model.get('merchantName')){ %>
+				
+				<div class="sheet order">
+					
+					<div class="title"><strong>Commande</strong></div>
+
+					Marchand : <strong><%= model.get('merchantName') %></strong><br />
+					Date de commande : <strong><%= model.get('orderDate') %></strong><br />
+					Réf. Kwixo : <strong><%= model.get('reference') %></strong><br />
+					Montant : <strong><%= model.get('amount') %></strong><br />
+					Frais : <strong><%= model.get('fee') %></strong><br />
+					Montant total débité : <strong><%= model.get('merchantName') %></strong><br />
+					Moyen de paiement : <strong><%= model.get('merchantName') %></strong><br />
+
+				</div><!-- / .sheet.order -->
+				
+				<div class="sheet billing">
+					
+					<div class="title"><strong>Adresse de facturation</strong></div>
+
+					<%  var billing = model.get('billingAddress'); %>
+
+					<%= model.get('customerTitle') %> <%= model.get('customerFirstName') %> <%= model.get('customerLastName') %> <br />
+					<%= billing.identity %> <%= billing.address %><br />
+					<%= billing.zipCode %> <%= billing.town %><br />
+
+				</div><!-- / .sheet.billing -->
+				
+				<div class="sheet shipping">
+					
+					<div class="title"><strong>Adresse de livraison</strong></div>
+
+					<%  var shipping = model.get('shippingAddress'); %>
+
+					<%= model.get('customerTitle') %> <%= model.get('customerFirstName') %> <%= model.get('customerLastName') %> <br />
+					<%= shipping.identity %> <%= shipping.address %><br />
+					<%= shipping.zipCode %> <%= shipping.town %><br />
+
+				</div><!-- / .sheet.shipping -->
+
+				<p>
+					<strong>Vous avez reçu votre commande</strong><br />
+					Elle est conforme et en bon état. Cliquez sur le bouton ci-dessous pour déclencher le paiement.<br />
+				</p>
+
+				<div class="buttons">
+					<input type="submit" name="confirmDelivery" value="Je valide la bonne réception" />
+				</div><!-- / .buttons -->
+
+				<p>
+					<strong>Vous n’avez pas reçu votre commande</strong><br />
+					<a href="/#popin/id/mtra_popup-savoir-plus">En savoir plus</a><br />
+				</p>
+
+			<% }; %>
+
+		</form>
+
+		<% }; %>
+		
+	</div><!-- / .fieldset -->
+
+	<% }; %>
+
+</div><!-- / .inner -->

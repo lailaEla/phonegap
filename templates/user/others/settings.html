@@ -1,0 +1,111 @@
+<%
+	var loading = model.get('loading');
+%>
+<div class="inner <% if(loading){ %>loading<% }; %>">
+
+	<h1 class="brown">Vos réglages</h1>
+	<div class="wrapper settings">
+		
+		<form action="#" method="post" class="form">
+			<div class="halfCol rep">
+				<div class="legend">
+					<strong>Répertoire</strong>
+				</div>
+				<fieldset>
+					<legend>Affichage par</legend>
+					<p class="input">
+						<span class="check contactshowfirstname">
+							<i>
+								<input type="radio"  class='check' name="show" id="firstnameView" />
+							</i>
+							<label for="firstnameView">Nom Prénom</label>
+						</span> 
+
+						<span class="check active contactshowlastname">
+							<i>
+								<input type="radio" name="show" id="lastnameView" />
+							</i>
+							<label for="lastnameView">Prénom Nom</label>
+						</span>
+					</p>
+				</fieldset>
+
+				<fieldset>
+					<legend>Tri par</legend>
+					<p class="input">
+						<span class="check contactfilterfirstname">
+							<i>
+								<input type="radio" name="tri" id="firstnameTri" />
+							</i>
+							<label for="firstnameTri">Nom Prénom</label>
+						</span> 
+						
+						<span class="check active contactfilterlastname">
+							<i>
+								<input type="radio" name="tri" id="lastnameTri" />
+							</i>
+							<label for="lastnameTri">Prénom Nom</label>
+						</span>
+					</p>
+				</fieldset>
+			</div>
+
+			<div class="halfCol personal">
+				<div class="legend">
+					<strong>Profil</strong>
+					<span>e-mail</span>
+					<span>SMS</span>
+				</div>  
+
+				<fieldset>
+					<div class=''>
+						<label for="firstname">Recevoir les newletters des partenaires Kwixo</label>
+						<span class="check profilenewsletter"><input type="checkbox" name="newsletter" id="newsletter" /></span> 
+					</div>
+
+					<div>
+						<label for="infoTransMail">Informations sur les transferts d’argent</label>
+						<span class="check active profile_transfer_info_email"><input type="checkbox" name="infoTransMail" id="infoTransMail" /></span> 
+						<span class="check profile_transfer_info_sms"><input type="checkbox" name="infoTransSMS" id="infoTransSMS" /></span> 
+					</div>
+
+					<div>
+						<label for="rappel">Rappel 2J avant l’envoi de transfert permanent</label>
+						<span class="check active profile_rapple2days"><input type="checkbox" name="rappel" id="rappel" /></span> 
+					</div>
+
+					<div>
+						<label for="connexion">Connexion à votre profil Kwixo</label>
+						<span class="check active profile_conxprofilekwixo"><input type="checkbox" name="connexion" id="connexion" /></span> 
+					</div>
+
+					<div>
+						<label for="changementMail">Changement d’identifiant, de mot de passe, etc</label>
+						<span class="check active profile_editable_email"><input type="checkbox" name="changementMail" id="changementMail" /></span> 
+						<span class="check profile_editable_sms"><input type="checkbox" name="changementSMS" id="changementSMS" /></span> 
+					</div>
+
+					<div>
+						<label for="infoLivraisonMail">Information sur la livraison d’une commande</label>
+						<span class="check active profile_deliveryinfo_email"><input type="checkbox" name="infoLivraisonMail" id="infoLivraisonMail" /></span> 
+						<span class="check profile_deliveryinfo_sms"><input type="checkbox" name="infoLivraison" id="infoLivraison" /></span> 
+					</div>
+
+					<div>
+						<label for="notificationMail">Notification d’une nouvelle étape <br /> sur un problème déclaré</label>
+						<span class="check active problemsnotifier_email"><input type="checkbox" name="notificationMail" id="notificationMail" /></span> 
+						<span class="check problemsnotifier_sms"><input type="checkbox" name="notificationSMS" id="notificationSMS" /></span> 
+					</div>
+ 
+				</fieldset>
+			</div>
+		</form>
+
+	</div><!-- / .wrapper -->
+	<% if(!loading){ %>
+
+	
+
+	<% }; %>
+
+</div>

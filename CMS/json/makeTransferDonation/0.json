@@ -1,0 +1,36 @@
+{
+	"transfer":{
+		"object" :"Sujet Message",
+		"message" :"Corps Message",
+		"state" :"WAITING_RECIPIENT_ENROLMENT",
+		"currency" :"EUR",
+		"reference":null,
+		"creationDate" :1281446730653,
+		"ids" :["ff8081812a5c2958012a5c3178df0014"],
+		"periodicity" :"MONTHLY",
+		"logins" :["fgdfgdf@test2254.com"],
+		"dateToBeExecuted" :"08-10-2010",
+		"amount" :10.0,
+		"clientType" :null,
+		"recallEmail" :null,
+		"dayNumber" :15,
+		"payeesToAddToContact" :null,
+		"meanOfPayment":{
+			"type" :"CC",
+			"validity" :"04-01-2017",
+			"name" :null,
+			"id" :"ff80808129f56e190129f595ca280037",
+			"hash" :"D52D7853E41B22367B3CDF56D53E4A5E08A1BC6401",
+			"lastTwoDigit" :"34",
+			"fourFirstDigit" :"429552",
+			"defaultForPayment" :false,
+			"defaultForReception" :false
+		},
+		"requestType" :"DEMAND",
+		"suspension" :null,
+		"fees" :0.0,
+		"payees" :["fgdfgdf@test2254.com"],
+		"executionType" :"IMMEDIATE",
+		"photoUrl" :"transfer/ff8081812a5c2958012a5c3178df0014.jpg"
+	}
+}

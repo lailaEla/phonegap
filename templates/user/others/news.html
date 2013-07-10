@@ -1,0 +1,18 @@
+<%
+	var loading = model.get('loading');
+%>
+<div class="inner <% if(loading){ %>loading<% }; %>">
+
+	<h1 class="sky">Actualité</h1>
+
+	<% if(!loading){ %>
+
+	<div class="wrapper">
+		
+		<%= model.get('content') %>
+
+	</div><!-- / .wrapper -->
+
+	<% }; %>
+
+</div>

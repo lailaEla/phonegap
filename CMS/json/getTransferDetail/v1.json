@@ -1,0 +1,30 @@
+{
+	"transferDetail":
+	{
+		"id" :"ff8081812a0f33be012a0f35b0d40005",
+		"reference" :"reference",
+		"type" :"DEMAND",
+		"origin" :"IPHONE",
+		"amount" :83,
+		"fees" :0.0,
+		"currency" :"EUR",
+		"subject" :"subject",
+		"message" :"message",
+		"photoFilename" :"transfer/ff8081812ca143e4012ca14eaf50000a.jpg",
+		"meanOfPayment" :"CB : 497010 - 98 2FABD26FE6A3E67CB412F243BBA9FD12B3832ED401",
+		"meanOfPaymentId" :"ff8080812ab3eaa6012ac2516d440010",
+		"creditorMailOrMobile" :"0635241478",
+		"debtorMailOrMobile" :"testint@yahoo.fr",
+		"requestDate" :"01-01-1970",
+		"immediate" :true,
+		"dateToBeExecuted" :"01-01-1970",
+		"recurrence" :false,
+		"periodicity" :"MONTHLY",
+		"recurrenceEndDate" :"01-01-1970",
+		"dayNumber" :0,
+		"suspended" :false,
+		"suspensionStartDate" :"01-01-1970",
+		"suspensionEndDate" :"01-01-1970",
+		"availableActions":["ACCEPT_DEMAND","REFUSE_DEMAND"]
+	}
+}

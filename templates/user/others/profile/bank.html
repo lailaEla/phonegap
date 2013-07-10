@@ -1,0 +1,62 @@
+<%
+	var means = model.get('means'),
+		types = [
+			{ label:'Carte', abbr:'CC' },
+			{ label:'Compte', abbr:'BA' }
+		];
+%>
+
+<div class="inner">
+
+	<h1 class="sky">Vos informations bancaires</h1>
+
+	<% if(model.get('loading')){ %>
+	
+	<div class="loading"></div>
+
+	<% } else { %>
+
+	<div class="form wrapper">
+		
+		<form name="formBank" novalidate="novalidate">
+
+			<p><strong class="purple">Vous pouvez sélectionner votre moyen de paiement par défaut, ajouter ou supprimer une carte.</strong></p>
+			
+			<% _.each(types,function(type){ %>
+			
+			<p><strong><%= type.label+'s' %></strong></p>
+			<div class="data">
+			
+				<% _.each(means.where({ type:type.abbr }),function(card){ %>
+				
+					<div class="bankData">
+						<div class="delete">Delete</div>
+						<input type="radio" name="default" value="<%= card.get('id') %>" id="<%= card.get('id') %>" />
+						<label for="<%= card.get('id') %>">
+							<%= type.label %><br />
+							<%= card.get('sixFirstDigit') %>xxxxxx<%= card.get('lastTwoDigit') %><br />
+						</label>
+					</div><!-- / .bankData -->
+				
+				<% }); %>
+			
+			</div>
+			
+			<% if('CC' == type.abbr){ %>
+			<a href="#0">Enregistrer une nouvelle carte</a>
+			<% }; %>
+
+			<% }); %>	
+
+			<div class="buttons">
+				<input type="reset" name="cancel" value="Annuler" />
+				<input type="submit" name="modify" value="Modifier" />
+			</div><!-- / .buttons -->
+
+		</form><!-- / .form -->
+
+	</div><!-- / .wrapper -->
+	
+	<% }; %>
+
+</div>

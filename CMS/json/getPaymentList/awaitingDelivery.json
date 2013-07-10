@@ -1,0 +1,16 @@
+{
+	"total":10,
+	"transactionList": [
+		{
+			"id" : "l1",
+			"reference" : "125002eb-ceb0-4c8d",
+			"creationDate" : "02-22-2010",
+			"amount" : 200.0,
+			"executionDate" : "02-22-2010",
+			"debtor" : "client@test.com",
+			"creditor" : "CDiscount",
+			"credit" : false,
+			"fee" : 0.0
+		}
+	]
+}

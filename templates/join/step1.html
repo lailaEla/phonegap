@@ -1,0 +1,103 @@
+<%
+	var personalData = model.get('personalData'),
+		securityData = model.get('securityData');
+%>
+<div class="inner secure form">
+
+	<form class="joinForm wrapper" data-root="personalData" novalidate="novalidate">
+		<fieldset>
+			<legend><strong>Informations personnelles</strong> - 1/3</legend>
+
+			<div class="halfCol">
+
+				<div class="field radios">
+					<span class="label">Civilité <span>*</span></span>
+					<input type="radio" name="civility" value="M" id="civilityM"<% if('M' == personalData.civility){ %> checked="checked"<% }; %> /><label for="civilityM">M.</label>
+					<input type="radio" name="civility" value="Mme" id="civilityMme"<% if('Mme' == personalData.civility){ %> checked="checked"<% }; %> /><label for="civilityMme">Mme</label>
+					<input type="radio" name="civility" value="Mlle" id="civilityMlle"<% if('Mlle' == personalData.civility){ %> checked="checked"<% }; %> /><label for="civilityMlle">Mlle</label>
+				</div><!-- / .field.radios -->
+
+				<div class="field">
+					<label for="lastName">Nom <span>*</span></label>
+					<input type="text" name="lastName" maxlength="40" id="lastName" value="<%= personalData.lastName %>" required="required" pattern="^[a-zA-Zéèëêàùûöô\- ]{1,40}$" />
+				</div><!-- / .field -->
+
+				<div class="field">
+					<label for="firstName">Prénom <span>*</span></label>
+					<input type="text" name="firstName"  maxlength="20" id="firstName" value="<%= personalData.firstName %>" required="required" pattern="^[a-zA-Zéèëêàùûöô\- ]{1,20}$" />
+				</div><!-- / .field -->
+
+				<div class="field">
+					<label for="birthDate">Date de naissance <span>*</span></label>
+					<input type="text" name="birthDate" id="birthDate" value="<%= personalData.birthDate %>" placeholder="JJ/MM/AAAA" required="required" pattern="^\d{2}/\d{2}/\d{4}$" />
+				</div><!-- / .field -->
+
+				<div class="field">
+					<label for="address">Adresse <span>*</span></label>
+					<input type="text" name="address" id="address" value="<%= personalData.address %>" pattern="^[a-zA-Zéèëêàùûöô\-/ ]{1,32}$" />
+				</div><!-- / .field -->
+
+			</div><!-- halfCol -->
+
+			<div class="halfCol">
+
+				<div class="field">
+					<label for="zipCode">Code postal <span>*</span></label>
+					<input type="text" name="zipCode" maxlength="5" id="zipCode" class="zipCode" value="<%= personalData.zipCode %>" pattern="^[0-9]{5}$" required="required" />
+				</div><!-- / .field -->
+
+				<div class="field listing-ville">
+					<label for="town">Ville <span>*</span></label>
+					<input type="text" name="town"  maxlength="32" id="town" value="<%= personalData.town %>" pattern="^[a-zA-Zéèëêàùûöô\-/ ]{1,32}$" />
+					<ul>
+						<li></li>
+					</ul>
+				</div><!-- / .field -->
+
+				<div class="field">
+					<label for="countryCode">Pays <span>*</span></label>
+					<select name="countryCode" id="countryCode" required="required">
+						<option value="FR"<% if('FR' == personalData.countryCode){ %> selected="selected"<% }; %>>France</option>
+						<option value="LU"<% if('LU' == personalData.countryCode){ %> selected="selected"<% }; %>>Luxembourg</option>
+					</select>
+				</div><!-- / .field -->
+
+				<div class="field">
+					<label for="professionnalCategory">Profession <span>*</span></label>
+					<select name="professionnalCategory" id="professionnalCategory" required="required">
+						<option value="">Sélectionner</option>
+						<option value="1">Agriculteurs exploitants</option>
+						<option value="2">Artisans, commerçants et chefs d'entreprises</option>
+						<option value="3">Cadres du secteur privé et professions indépendantes</option>
+						<option value="4">Professions intermédiaires</option>
+						<option value="5">Employés</option>
+						<option value="6">Ouvriers</option>
+						<option value="7">Retraités</option>
+						<option value="8">Autres, sans activité professionnelle</option>
+					</select>
+				</div><!-- / .field -->
+
+				<p><a href="#popin/id/mtra_popup-FIP">Lire la Fiche d'Information</a></p>
+
+				<div class="sub field">
+					<input type="checkbox" name="termsOfServiceAccepted" id="termsOfServiceAccepted" value="true" data-root="securityData" <% if(true == securityData.termsOfServiceAccepted){ %>checked="checked"<% }; %> required="required" /><label for="termsOfServiceAccepted"><strong>J’ai lu et j’accepte les CGU Kwixo**</strong></label>
+				</div><!-- / .sub -->
+
+			</div><!-- / .halfCol -->
+
+			<div class="buttons">
+				<input type="submit" name="continue" class="continueStep2" value="Continuer" />
+			</div><!-- / .buttons -->
+			<small>
+				* Informations obligatoires. <a href="#popin/id/mcom_popup-donnees-perso">Mentions données personnelles</a><br />
+				<a href="#popin/id/mtra_popup-CGU">** Lire les CGU Kwixo</a>
+			</small> 
+
+			<span class="txt-cnt">Kwixo est un établissement de paiement <br /> et s'engage à ne pas communiquer vos données</span>
+			<span class="txt-cnt2">Kwixo est un établissement de paiement et s'engage à ne pas communiquer vos données</span>
+
+		</fieldset>
+
+	</form>
+
+</div><!-- / .inner -->

@@ -1,0 +1,28 @@
+<div class="inner">
+
+	<h1 class="violet">Récapitulatif du transfert</h1>
+
+	<div class="wrapper form">
+
+		<form name="formSend" novalidate="novalidate">
+
+			<p><strong>
+				Vous souhaitez demander <%= model.get('amount') %>&euro; à :
+				<% _.each(model.get('recipientLogins').split(','),function(recipient){ %>
+					<%= recipient %><br />
+				<% }); %>
+			</strong></p>
+
+			<p><strong>Merci de confirmer votre demande et de vérifier l'indicatif.</strong></p>
+
+			<div class="buttons">
+				<input type="submit" name="send" value="Envoyer" />
+			</div><!-- / .buttons -->
+
+			<small>* Informations obligatoire</small>
+
+		</form>
+
+	</div><!-- / .wrapper -->
+
+</div><!-- / .inner -->

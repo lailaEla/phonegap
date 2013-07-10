@@ -1,0 +1,78 @@
+<%
+	var type = model.get('type');
+%>
+
+<div class="inner auth">
+
+
+	<div class="wrapper">
+		<div class="col_left">
+			<h1 class="purple">Déjà inscrit</h1>
+			<div class="tabs">
+				<ul>
+					<li class="mobileTab <% if('mobile' == type){ %>on<% }; %>"><span>Mobile</span></li>
+					<li class="emailTab <% if('email' == type){ %>on<% }; %>"><span>Email</span></li>
+					<li><a class="help" href="#popin/id/mtra_popup-mdp">Aide</a></li>
+				</ul>
+		 	</div>
+			<div class="halfCol">
+				<form class="logForm" novalidate="novalidate" name="logForm">
+					<fieldset>
+						
+						<% if('mobile' == type){ %>
+						<div class="prefixed">
+							<select name="prefix" id="prefix">
+								<% _.each(model.get('prefixs'),function(option){ %>
+								<option value="<%= option.value %>" <% if(option.value == model.get('prefix')){ %>selected="selected"<% }; %>><%= option.label %></option>					
+								<% }); %>
+							</select>
+							<input type="tel" name="mobile" id="mobile" placeholder="votre n° (ex: 611223344)" pattern="[0-9]{}" value="<%= model.get('mobile') %>" required="required" />
+						</div><!-- / .composed -->
+						<% } else { %>
+						<input type="email" name="email" id="email" placeholder="votre e-mail" value="<%= model.get('email') %>" />
+						<% }; %>
+						
+						<input type="checkbox" name="store" id="storeMobile" <% if(model.get('store')){ %> checked="checked" <% }; %> /><label for="storeMobile">Mémoriser l'identifiant</label>
+						
+						<input type="password" name="password" id="passwordMobile" placeholder="votre mot de passe" />
+						<a class="lost" href="#passwordRecovery">Mot de passe oublié ?</a>
+
+					</fieldset>
+
+					<div class="buttons">
+						<input type="submit" name="signin" class="signin" value="S'identifier" />
+					</div>
+
+				</form>
+			</div> 
+		</div>
+		<div class="col_left">
+				<h1 class="violet">Pas encore inscrit ?</h1>
+			<div class="halfCol"> 
+				<div class="text">
+					<p>Enregistrez une carte bancaire et créez gratuitement votre profil Kwixo.<br />
+						Votre commande est validée !</p>
+
+					<p>C’est simple. Une fois inscrit, plus besoin de saisir vos coordonnées bancaires pour vos futurs paiements.</p>
+				</div>
+
+					<div class="buttons">
+						<a href="#join/step1" class="button">S'inscrire</a>
+					</div>
+
+			</div>
+		</div>
+	</div> <!-- / .tabs -->
+
+		<div class="info"> 
+			<img width="284" height="100" alt="Découvrir Kwixo" src="img/decouvrir-kwixo.png" class="head"> 
+		</div>
+	<div class="links bot">
+		<ul>
+			<li class="violet"><a href="#join/home">Pas encore inscrit ?</a></li>
+		</ul>
+	</div><!-- / .links -->
+
+	<div class="saver"></div><!-- Saver count must be equal to number of links -->
+
+</div><!-- / .inner -->

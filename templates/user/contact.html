@@ -1,0 +1,51 @@
+<%
+	var words = {
+		other:'Autre',
+		mobile:'Mobile',
+		home:'Domicile',
+		work:'Travail'
+	};
+%>
+<div class="inner">
+	
+	<% if('send' == contactMod){ %>
+		<h1 class="purple">Envoyer  de l'argent</h1>	
+	<% } else { %>
+		<h1 class="violet">Demander  de l'argent</h1>
+	<% }; %>
+
+	<div class="wrapper contact">
+		
+		<img src="<%= model.get('photos') || 'img/avatar.png' %>" width="42" height="40" />
+		<span class="name"><%= model.get('name').givenName %> <strong><%= model.get('name').familyName %></strong></span>
+
+		
+		<%
+			var phones = model.get('phoneNumbers');
+			if(phones){
+		%>
+			<div class="coords">
+				<ul>
+				<% _.each(phones,function(phone){ %>
+					<li data-identifier="<%= phone.value %>"><span><%= words[phone.type] || phone.type %></span> <strong><%= phone.value %></strong></li>
+				<% }); %>
+				<ul>
+			</div>
+		<%
+			};
+
+			var emails = model.get('emails');
+			if(emails){
+		%>
+			<div class="coords">
+				<ul>
+				<% _.each(emails,function(email){ %>
+					<li data-identifier="<%= email.value %>"><span><%= words[email.type] || email.type %></span> <strong><%= email.value %></strong></li>
+				<% }); %>
+				<ul>
+			</div>			
+		<% }; %>
+
+	</div><!-- / .wrapper -->
+
+</div><!-- / .inner -->

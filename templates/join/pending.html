@@ -1,0 +1,78 @@
+<%
+	var pending = model.get('pending'),
+		securityData = model.get('securityData'),
+		prefixs = model.get('prefixs');
+%>
+
+<div class="inner form money">
+
+	<div class="wrapper">
+
+		<div class="halfCol alone">
+			<div class="legend"><strong>Vous avez reçu de l'argent ?</strong></div>
+			
+			<p>Pour bénéficier de l’argent transféré, identifiez-vous ci-dessous et poursuivez votre inscription.</p>
+
+			
+			<form class="radioChoice">
+				<input type="radio" name="pending" id="pendingEmail" value="email" <% if('email' == pending){ %>checked="checked"<% }; %> /><label for="pendingEmail">par e-mail</label>
+				<input type="radio" name="pending" id="pendingMobile" value="mobile" <% if('mobile' == pending){ %>checked="checked"<% }; %> /><label for="pendingMobile">par SMS</label>
+			</form><!-- / .radioChoice -->
+
+
+
+			<form class="pendingForm" name="securityData" novalidate="novalidate">
+				<fieldset>
+					
+					<% if('email' == pending){ %>
+
+					<p><strong>Saisissez l’e-mail sur lequel Kwixo vous a prévenu ainsi que le code à 4 chiffres reçu.</strong></p>
+					
+					<div class="field inline">
+						<label for="email">Votre e-mail <span>*</span></label>
+						<input type="text" name="email" id="email" value="<%= securityData.email %>" data-root="securityData" required="required" pattern="^[a-zA-Zéèëêàùûöô\-/ ]{1,32}$" />
+					</div><!-- / .field -->
+
+					<% } else if('mobile' == pending){ %>
+
+					<p><strong>Saisissez le n° de mobile sur lequel Kwixo vous a prévenu ainsi que le code à 4 chiffres reçu.</strong></p>
+					
+					<div class="field">		
+						<div class="prefixed">
+							<select name="prefix" id="prefix" data-root="securityData">
+								<% _.each(prefixs,function(option){ %>
+								<option value="<%= option.value %>" <% if(option.value == securityData.prefix){ %>selected="selected"<% }; %>><%= option.label %></option>					
+								<% }); %>
+							</select>
+							<input type="tel" name="mobile" id="mobile" placeholder="votre n° (ex: 611223344)" data-root="securityData" value="<%= securityData.mobile %>" pattern="[0-9]*" />
+						</div><!-- / .composed -->
+					</div><!-- / .field -->
+
+					<% }; %>
+
+					<% if('' != pending){ %>
+					
+					<div class="field inline">
+						<label for="code">Code à 4 chiffres<span>*</span></label>
+						<input type="text" name="code" id="code" value="<%= model.get('code') %>" required="required" pattern="^[0-9]{4}$" />
+					</div><!-- / .field -->
+
+					<div class="buttons">
+						<input type="submit" name="valid" class="valid" value="Valider" />
+					</div><!-- / .buttons -->
+
+					<% }; %>
+
+				</fieldset>
+
+			</form>
+
+			<small>
+				<a href="#popin/id/mcom_popup-donnees-perso">Mentions données personnelles</a><br />
+			</small>
+
+		</div><!-- / .halfCol -->
+
+	</div><!-- / .wrapper -->
+
+</div><!-- / .inner -->

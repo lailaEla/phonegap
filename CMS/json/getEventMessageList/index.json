@@ -1,0 +1,20 @@
+{
+	"notificationList":[
+		{
+			"message":"message 1",
+			"displayDate":"03-25-2010",
+			"alert":true,
+			"seen":false
+		},{
+			"message":"message 2",
+			"displayDate":"03-26-2010",
+			"alert":true,
+			"seen":false
+		},{
+			"message":"message 3",
+			"displayDate":"03-16-2010",
+			"alert":true,
+			"seen":false
+		}
+	]
+}

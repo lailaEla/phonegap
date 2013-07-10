@@ -1,0 +1,39 @@
+<div class="inner">
+
+	<h1 class="purple">Récapitulatif du transfert</h1>
+
+	<div class="wrapper form">
+
+		<form name="formSend" novalidate="novalidate">
+
+			<p><strong>Merci de confirmer votre transfert.</strong></p>
+
+			<p><strong>
+				Vous souhaitez envoyer <%= model.get('amount') %>&euro; à
+				<% _.each(model.get('recipientLogins').split(','),function(recipient,i){ %>
+					<% if (0 != i){ %>, <% }; %><%= recipient %>
+				<% }); %>
+			</strong></p>
+
+
+			<!-- Input checkBox-->
+			<p class="input">
+				<span class="check">
+					<i>
+						<input type="radio" name="tri" id="lastnameTri" />
+					</i>
+					<label for="lastnameTri">Ajouter des Contacts à vos amis</label>
+				</span>
+			</p>
+
+			<div class="buttons">
+				<input type="submit" name="send" value="Envoyer" />
+			</div><!-- / .buttons -->
+
+			<small>* Informations obligatoire</small>
+
+		</form>
+
+	</div><!-- / .wrapper -->
+
+</div><!-- / .inner -->

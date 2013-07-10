@@ -1,0 +1,104 @@
+<%
+	var items = [],
+		state = model.get('state'),
+		words = model.get('wording')[state.cat],
+		symbol = {
+			EUR:'€'
+		},
+		loading = model.get('loading');
+
+
+	switch(state.cat){
+		case 'validable':
+			items = model.get('validable').models;
+			break;
+		case 'claim':
+			items = model.get('claim').models;
+			break;
+		case 'relaunchable':
+			items = model.get('relaunchable').models;
+			break;
+		case 'awaiting':
+			items = model.get('awaiting').models;
+			break;
+		case 'notification':
+			items = model.get('notification').models;
+			break;
+	};
+%>
+
+<div class="inner <% if(loading){ %>loading<% }; %>">
+
+	<h1 class="brown"><%= words.title %></h1>
+
+	<% if(!loading){ %>
+
+	<div class="wrapper">
+		
+		<%
+			_.each(items,function(item,index){
+
+				switch(state.cat){
+					case 'validable':
+		%>
+				
+			<a class="link" href="#user/actions/<%= state.cat %>/<%= index %>">
+				<small><%= item.get('creationDate') %></small><br />
+				<strong><%= item.get('creditor') %></strong><br />
+				vous demande <%= item.get('amount') %> <%= symbol[item.get('currency')] %><br />
+			</a>
+
+			<% 
+						break;		
+					case 'claim':
+			%>
+				
+			<a class="link" href="#user/actions/<%= state.cat %>/<%= index %>">
+				<small><%= item.get('creationDate') %></small><br />
+				Vous souhaitez redemander <%= item.get('amount') %> <%= symbol[item.get('currency')] %><br />
+				à <strong><%= item.get('creditor') %></strong><br />
+			</a>
+
+			<% 
+					break;		
+				case 'relaunchable':
+			%>
+				
+			<a class="link" href="#user/actions/<%= state.cat %>/<%= index %>">
+				<small><%= item.get('creationDate') %></small><br />
+				Vous souhaitez renouveler votre envoi de <%= item.get('amount') %> <%= symbol[item.get('currency')] %><br />
+				à <strong><%= item.get('creditor') %></strong><br />
+			</a>
+
+			<% 
+					break;		
+				case 'awaiting':
+			%>
+				
+			<a class="link" href="#user/actions/<%= state.cat %>/<%= index %>">
+				<small><%= item.get('creationDate') %></small><br />
+				Avez-vous reçu votre commande <strong><%= item.get('creditor') %> ?</strong><br />
+			</a>
+
+			<% 
+					break;		
+				case 'notification':
+			%>
+				
+			<a class="link notif">
+				<small><%= item.get('displayDate') %></small><br />
+				<%= item.get('message') %><br />
+			</a>
+
+			<% 
+					break;		
+				};
+			%>
+
+		<% }); %>
+
+	</div><!-- / .wrapper -->
+
+	<% }; %>
+
+</div>

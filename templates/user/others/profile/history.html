@@ -1,0 +1,56 @@
+<%
+	var items = {},
+		state = model.get('state'),
+		wordsDemand = model.get('wording')[state.cat+"Demand"],
+		wordsDonation = model.get('wording')[state.cat+"Donation"],
+		symbol = {
+			EUR:'€'
+		},
+		loading = model.get('loading');
+		items.historyDemand = model.get('historyDemand').models;
+		items.historyDonation = model.get('historyDonation').models;
+%>
+<div class="inner <% if(loading){ %>loading<% }; %> history">
+
+	<h1 class="sky">Historique de vos opérations</h1>
+	<h2 class="violet"><%= wordsDemand.title %></h2>
+
+	<% if(!loading){ %>
+
+		<div class="wrapper">
+			<% if(items.historyDemand.length>0){ %>
+				<%
+					_.each(items.historyDemand,function(item,index){%>
+					<a class="link"  href="#user/others/profile/<%= state.cat %>Demand/<%= index %>">
+						<small><%= item.get('creationDate') %></small><br />
+						<strong><%= item.get('object') %></strong><br>
+						vous demande <%= item.get('amount') %> <%= symbol[item.get('currency')] %> <br />
+					</a>
+				<% }); %> 
+			<% }else{ %>
+				<span class="link notif">
+					Vous n'avez pas d'opérations en cours.
+				</span>
+			<% } %>
+
+		</div><!-- / .wrapper -->
+
+		<h2 class="violet2"><%= wordsDonation.title %></h2>
+		<div class="wrapper">
+					<% if(items.historyDonation.length>0){ %>
+				<%
+					_.each(items.historyDonation,function(item,index){%>
+					<a class="link"  href="#user/others/profile/<%= state.cat %>Donation/<%= index %>">
+						<small><%= item.get('creationDate') %></small><br />
+						<strong><%= item.get('object') %></strong><br>
+						vous demande <%= item.get('amount') %> <%= symbol[item.get('currency')] %> <br />
+					</a>
+				<% }); %> 
+			<% }else{ %>
+				<span class="link notif">
+					Vous n'avez pas d'opérations en cours.
+				</span>
+			<% } %>  
+		</div>
+	<% }; %>
+</div>
